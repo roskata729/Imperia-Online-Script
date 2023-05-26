@@ -3,10 +3,6 @@ from selenium.webdriver.common.action_chains import ActionChains
 import time
 
 def sendDungeonAttacks(driver):
-    # Checks if activity popup is shown and closes it
-    if driver.find_element("xpath",'//*[@class="txt-title"]'):
-        driver.find_element("xpath",'//*[@title="Затваряне"]').click()
-
     try: 
         dungeon = driver.find_element("xpath",'//*[@class="canvas-node dungeon-light"]')
 
@@ -20,12 +16,12 @@ def sendDungeonAttacks(driver):
         if dungeon_attack_button:
             if dungeon_attack_button.is_enabled:
                 dungeon_attack_button.click()
-                time.sleep(2)
+                time.sleep(3)
                 #driver.find_element("xpath",'//*[@class="flanks-flank-archers"]')
                 #driver.find_element("id", "attack-general").click()
-                time.sleep(1)
+                # time.sleep(2)
                 driver.find_element("id", "select-all-army").click()
-                time.sleep(1)
+                time.sleep(2)
                 sendAttackButton = driver.find_element("xpath", "//button[text()='Полева битка']") or driver.find_element("xpath", "//button[text()='Крепостна Обсада']")
                 print(sendAttackButton)
                 sendAttackButton.click()
